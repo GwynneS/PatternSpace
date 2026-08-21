@@ -1,0 +1,24 @@
+name: Build PatternSpace
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Configure
+        run: cmake -S . -B build
+
+      - name: Build
+        run: cmake --build build
+
+      - name: Run prototype
+        run: ./build/patternspace
+
+      - name: Verify SVG output
+        run: test -f patternspace_output.svg
