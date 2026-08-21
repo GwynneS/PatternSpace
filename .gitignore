@@ -1,0 +1,4 @@
+build/
+patternspace_output.svg
+.DS_Store
+*.o
